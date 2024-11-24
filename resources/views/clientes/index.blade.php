@@ -123,17 +123,8 @@
 <body>
 
     <div class="container">
-        <!-- Filtro de Cliente -->
-        <h2>Filtrar Clientes</h2>
-        <form method="GET" action="{{ route('clientes.index') }}" class="form-inline mb-4">
-            <div class="form-group">
-                <label for="nome" class="mr-2">Nome do Cliente:</label>
-                <input type="text" name="nome" id="nome" class="btn btn-warning" value="{{ request('nome') }}" placeholder="Pesquisar por nome...">
-                <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
-            </div>
-        </form>
 
-        <h3>Lista de Clientes</h3>
+        <h1 class="mb-4">Lista de Clientes</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -142,6 +133,7 @@
                     <th>E-mail</th>
                     <th>Telefone</th>
                     <th>Endereço</th>
+                    <th>CPF</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -153,6 +145,7 @@
                         <td>{{ $cliente->email }}</td>
                         <td>{{ $cliente->telefone }}</td>
                         <td>{{ $cliente->endereco }}</td>
+                        <td>{{ $cliente->cpf }}</td>
                         <td>
                             <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-primary">Editar</a>
                             <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" style="display:inline;">
@@ -172,7 +165,7 @@
 
         <div class="d-flex">
             <a href="{{ route('clientes.create') }}" class="btn btn-primary">Criar Novo Cliente</a>
-            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar para o Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar Dash</a>
         </div>
     </div>
 

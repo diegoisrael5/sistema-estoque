@@ -9,12 +9,14 @@ class Fornecedores extends Model
 {
     use HasFactory;
 
-    // Adicione os campos permitidos para atribuição em massa
+    protected $table = 'fornecedores';
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+
     protected $fillable = [
         'nome',
         'email',
         'telefone',
-        'endereco',
         'cnpj',
     ];
 }

@@ -123,25 +123,9 @@
 <body>
 
     <div class="container">
-        <!-- Filtro de Equipamento -->
-        <h2>Filtrar Saídas de Estoque</h2>
-        <form method="GET" action="{{ route('saidas_estoque.index') }}" class="form-inline mb-4">
-            <div class="form-group">
-                <label for="equipamento_id" class="mr-2">Equipamento:</label>
-                <select name="equipamento_id" id="equipamento_id" class="btn btn-warning">
-                    <option value="">Todos os Equipamentos</option>
-                    @foreach ($equipamentos as $equipamento)
-                        <option value="{{ $equipamento->id }}"
-                            {{ request('equipamento_id') == $equipamento->id ? 'selected' : '' }}>
-                            {{ $equipamento->nome }}
-                        </option>
-                    @endforeach
-                </select>
-                <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
-            </div>
-        </form>
 
-        <h3>Lista de Saídas de Estoque</h3>
+        <h1 class="mb-4">Lista de Saídas de Estoque</h1>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -203,7 +187,7 @@
 
         <div class="d-flex">
             <a href="{{ route('saidas_estoque.create') }}" class="btn btn-primary">Criar Nova Saída</a>
-            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar para o Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar Dash</a>
         </div>
     </div>
 

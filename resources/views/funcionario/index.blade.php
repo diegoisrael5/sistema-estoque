@@ -124,17 +124,8 @@
 <body>
 
     <div class="container">
-        <!-- Filtro de Funcionário -->
-        <h2>Filtrar Funcionários</h2>
-        <form method="GET" action="{{ route('funcionarios.index') }}" class="form-inline">
-            <div class="form-group">
-                <label for="nome" class="mr-2">Nome do Funcionário:</label>
-                <input type="text" name="nome" id="nome" class="btn btn-warning" value="{{ request('nome') }}" placeholder="Pesquisar por nome...">
-                <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
-            </div>
-        </form>
+        <h1 class="mb-4">Lista de Funcionários</h1>
 
-        <h3>Lista de Funcionários</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -175,7 +166,7 @@
 
         <div class="d-flex">
             <a href="{{ route('funcionarios.create') }}" class="btn btn-primary">Criar Novo Funcionário</a>
-            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar para o Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar Dash</a>
         </div>
     </div>
 

@@ -109,7 +109,7 @@
 <body>
 
     <div class="container">
-        <h3>Lista de Entradas de Estoque</h3>
+        <h1 class="mb-4">Lista de Entradas de Estoque</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>

@@ -109,6 +109,10 @@
                 <label for="endereco" class="form-label">Endereço</label>
                 <input type="text" class="form-control" id="endereco" name="endereco" required>
             </div>
+            <div class="form-group">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required>
+            </div>
 
             <div class="d-flex justify-content-between mt-4">
                 <button type="submit" class="btn btn-primary">Cadastrar Cliente</button>

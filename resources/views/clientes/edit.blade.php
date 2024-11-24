@@ -8,9 +8,7 @@
 
     <title>Editar Cliente</title>
 
-    <!-- Estilo CSS Customizado -->
     <style>
-        /* Edição de Cliente - Estilo Dark */
         body {
             background-color: #121212;
             color: #e0e0e0;
@@ -23,112 +21,110 @@
             background-color: #1e1e1e;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin: 20px auto;
             max-width: 800px;
         }
 
         h1 {
             color: #f5f5f5;
-            font-size: 2rem;
-            margin-bottom: 20px;
             text-align: center;
         }
 
-        .btn {
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .btn-warning {
-            background-color: #ff9800;
-            color: #fff;
-            border: none;
-        }
-
-        .btn-warning:hover {
-            background-color: #f57c00;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            color: #fff;
-            border: none;
-        }
-
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-
-        .form-label {
-            color: #f5f5f5;
-            font-weight: bold;
-        }
-
-        .form-control {
-            background-color: #333;
-            color: #f5f5f5;
-            border: 1px solid #444;
-            border-radius: 5px;
-            padding: 10px;
-            width: 100%;
+        .form-group {
             margin-bottom: 15px;
         }
 
-        .form-control:focus {
-            border-color: #6200ea;
-            box-shadow: 0 0 0 0.2rem rgba(98, 0, 234, 0.25);
+        label {
+            color: #e0e0e0;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+
+        .btn-success {
+            background-color: #4caf50;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #9e9e9e;
+            color: #fff;
+        }
+
+        .error-list {
+            color: red;
         }
     </style>
 </head>
 
 <body>
-
     <div class="container">
-        <!-- Botão de Voltar -->
-        <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Voltar</a>
+        <h1>Editar Cliente</h1>
 
-        <h1 class="mb-4">Editar Cliente</h1>
+        <!-- Exibição de erros de validação -->
+        @if ($errors->any())
+            <div class="error-list">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
+        <!-- Formulário para atualizar os dados do cliente -->
         <form action="{{ route('clientes.update', $cliente->id) }}" method="POST">
             @csrf
             @method('PUT')
 
-            <!-- Nome -->
-            <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
+            <!-- Campo para Nome -->
+            <div class="form-group">
+                <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome', $cliente->nome) }}" required>
             </div>
 
-            <!-- E-mail -->
-            <div class="mb-3">
-                <label for="email" class="form-label">E-mail</label>
+            <!-- Campo para Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
                 <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $cliente->email) }}" required>
             </div>
 
-            <!-- Telefone -->
-            <div class="mb-3">
-                <label for="telefone" class="form-label">Telefone</label>
-                <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $cliente->telefone) }}" required>
+            <!-- Campo para Telefone -->
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone', $cliente->telefone) }}">
             </div>
 
-            <!-- Endereço -->
-            <div class="mb-3">
-                <label for="endereco" class="form-label">Endereço</label>
+            <!-- Campo para Endereço -->
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
                 <input type="text" name="endereco" id="endereco" class="form-control" value="{{ old('endereco', $cliente->endereco) }}" required>
             </div>
 
-            <!-- Botões -->
-            <div class="d-flex justify-content-between">
-                <button type="submit" class="btn btn-warning">Atualizar Cliente</button>
+            <!-- Campo para CPF -->
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf', $cliente->cpf) }}" required>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="d-flex">
+                <button type="submit" class="btn btn-success">Atualizar</button>
                 <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
-
 </body>
 
 </html>

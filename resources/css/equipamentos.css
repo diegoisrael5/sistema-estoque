@@ -1,8 +1,10 @@
 /* Equipamentos - Estilo Dark */
 body {
     background-color: #121212;
-    color: #8a0606;
+    color: #e0e0e0;
     font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -10,20 +12,59 @@ body {
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
 }
 
 h1 {
-    color: #000000;
+    color: #f5f5f5;
     font-size: 2rem;
     margin-bottom: 20px;
     text-align: center;
 }
 
+.btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #6200ea;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #3700b3;
+}
+
+.btn-warning {
+    background-color: #ff9800;
+    color: #fff;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #f57c00;
+}
+
+.btn-danger {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
 .table {
     width: 100%;
     margin-top: 20px;
-    color: #050404;
+    color: #e0e0e0;
     border-collapse: collapse;
 }
 
@@ -35,7 +76,7 @@ h1 {
 
 .table th {
     background-color: #333;
-    color: #0a0a0a;
+    color: #fff;
     font-weight: bold;
 }
 
@@ -45,40 +86,4 @@ h1 {
 
 .table tr:hover {
     background-color: #3b3b3b;
-}
-
-.btn {
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.btn-primary {
-    background-color: #6200ea;
-    color: #f50c0c;
-    border: none;
-}
-
-.btn-primary:hover {
-    background-color: #3700b3;
-}
-
-.btn-warning {
-    background-color: #ff9800;
-    color: #160b0b;
-    border: none;
-}
-
-.btn-warning:hover {
-    background-color: #f57c00;
-}
-
-.btn-danger {
-    background-color: #f44336;
-    color: #812525;
-    border: none;
-}
-
-.btn-danger:hover {
-    background-color: #d32f2f;
 }

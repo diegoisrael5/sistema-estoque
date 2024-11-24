@@ -23,7 +23,7 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('entrada_estoque.index')" :active="request()->routeIs('entrada_estoque.index')">
-                        {{ __('Entrada dos Equipamentos') }}
+                        {{ __('Entrada Estoque') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -125,6 +125,7 @@
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
+
             </div>
         </div>
     </div>

@@ -124,17 +124,8 @@
 <body>
 
     <div class="container">
-        <!-- Filtro de Fornecedor -->
-        <h2>Filtrar Fornecedores</h2>
-        <form method="GET" action="{{ route('fornecedores.index') }}" class="form-inline">
-            <div class="form-group">
-                <label for="nome" class="mr-2">Nome do Fornecedor:</label>
-                <input type="text" name="nome" id="nome" class="btn btn-warning" value="{{ request('nome') }}" placeholder="Pesquisar por nome...">
-                <button type="submit" class="btn btn-primary ml-2">Filtrar</button>
-            </div>
-        </form>
+        <h1 class="mb-4">Lista de Fornecedores</h1>
 
-        <h3>Lista de Fornecedores</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -173,7 +164,7 @@
 
         <div class="d-flex">
             <a href="{{ route('fornecedores.create') }}" class="btn btn-primary">Criar Novo Fornecedor</a>
-            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar para o Dashboard</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-warning">Voltar Dash</a>
         </div>
     </div>
 

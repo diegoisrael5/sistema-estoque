@@ -28,6 +28,7 @@ class ClienteController extends Controller
             'email' => 'required|email|unique:clientes,email',
             'telefone' => 'required|string|max:20',
             'endereco' => 'required|string|max:255',
+            'cpf' => 'nullable|string|max:14',
         ]);
 
         // Criando o cliente
@@ -36,6 +37,8 @@ class ClienteController extends Controller
             'email' => $request->email,
             'telefone' => $request->telefone,
             'endereco' => $request->endereco,
+            'cpf' => $request->cpf,
+
         ]);
 
         // Redirecionando de volta para a lista de clientes
@@ -55,9 +58,12 @@ class ClienteController extends Controller
             'nome' => 'required|string|max:255',
             'email' => 'required|email|unique:clientes,email,' . $cliente->id,
             'telefone' => 'required|string|max:20',
+            'endereco' => 'required|string|max:20',
+            'cpf' => 'nullable|string|max:14',
+
         ]);
 
-        $cliente->update($request->only(['nome', 'email', 'telefone']));
+        $cliente->update($request->only(['nome', 'email', 'telefone', 'endereco', 'cpf']));
 
         return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
     }

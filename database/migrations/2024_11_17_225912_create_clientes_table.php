@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('telefone');
             $table->string('endereco');
+            $table->string('cpf');
             $table->timestamps();
         });
     }

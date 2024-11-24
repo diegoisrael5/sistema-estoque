@@ -29,69 +29,60 @@ class FornecedoresController extends Controller
      */
     public function store(Request $request)
     {
-        // Validação dos dados do fornecedor
         $validatedData = $request->validate([
             'nome' => 'required|string|max:255',
             'email' => 'required|email|unique:fornecedores,email',
             'telefone' => 'nullable|string|max:20',
-            'endereco' => 'nullable|string|max:255',
+            'cnpj' => 'nullable|string|max:255',
         ]);
 
-        // Criação do fornecedor
         Fornecedores::create($validatedData);
 
-        // Redireciona para a lista de fornecedores com mensagem de sucesso
         return redirect()->route('fornecedores.index')
-                         ->with('success', 'Fornecedor cadastrado com sucesso!');
-    }
-
-    /**
-     * Exibe os detalhes de um fornecedor específico.
-     */
-    public function show(Fornecedores $fornecedor)
-    {
-        return view('fornecedores.show', compact('fornecedor'));
+            ->with('success', 'Fornecedor cadastrado com sucesso!');
     }
 
     /**
      * Exibe o formulário para editar um fornecedor específico.
      */
-    public function edit(Fornecedores $fornecedor)
+    public function edit($id)
     {
+        $fornecedor = Fornecedores::findOrFail($id);
         return view('fornecedores.edit', compact('fornecedor'));
     }
 
     /**
      * Atualiza as informações de um fornecedor específico.
      */
-    public function update(Request $request, Fornecedores $fornecedor)
+    public function update(Request $request, $id)
     {
-        // Validação dos dados do fornecedor
-        $validatedData = $request->validate([
+        $request->validate([
             'nome' => 'required|string|max:255',
-            'email' => 'required|email|unique:fornecedores,email,' . $fornecedor->id,
-            'telefone' => 'nullable|string|max:20',
-            'endereco' => 'nullable|string|max:255',
+            'email' => 'required|email|max:255',
+            'telefone' => 'nullable|string|max:255',
+            'cnpj' => 'required|string|max:18', // Verifique a validação do CNPJ conforme necessário
         ]);
 
-        // Atualização dos dados do fornecedor
-        $fornecedor->update($validatedData);
+        $fornecedor = Fornecedores::findOrFail($id);
 
-        // Redireciona para a lista de fornecedores com mensagem de sucesso
-        return redirect()->route('fornecedores.index')
-                         ->with('success', 'Fornecedor atualizado com sucesso!');
+        $fornecedor->update([
+            'nome' => $request->input('nome'),
+            'email' => $request->input('email'),
+            'telefone' => $request->input('telefone'),
+            'cnpj' => $request->input('cnpj'),
+        ]);
+
+        return redirect()->route('fornecedores.index')->with('success', 'Fornecedor atualizado com sucesso!');
     }
 
     /**
      * Exclui um fornecedor específico.
      */
-    public function destroy(Fornecedores $fornecedor)
+    public function destroy($id)
     {
-        // Exclui o fornecedor do banco de dados
+        $fornecedor = Fornecedores::findOrFail($id);
         $fornecedor->delete();
 
-        // Redireciona para a lista de fornecedores com mensagem de sucesso
-        return redirect()->route('fornecedores.index')
-                         ->with('success', 'Fornecedor excluído com sucesso!');
+        return redirect()->route('fornecedores.index')->with('success', 'Fornecedor deletado com sucesso!');
     }
 }

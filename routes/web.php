@@ -115,17 +115,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 
 
-    Route::resource('fornecedores', App\Http\Controllers\fornecedoresController::class);
+
+    Route::resource('fornecedores', App\Http\Controllers\FornecedoresController::class);
     Route::resource('fornecedores', FornecedoresController::class);
-    Route::get('/fornecedores', [fornecedoresController::class, 'index'])->name('fornecedores.index');
-    Route::get('/fornecedores/create', [fornecedoresController::class, 'create'])->name('fornecedores.create');
-    Route::post('/fornecedores/store', [fornecedoresController::class, 'store'])->name('fornecedores.store');
-    Route::get('/fornecedores/{id}', [fornecedoresController::class, 'show'])->name('fornecedores.show');
-    Route::get('/fornecedores/{id}/edit', [fornecedoresController::class, 'edit'])->name('fornecedores.edit');
-    Route::put('/fornecedores/{id}', [fornecedoresController::class, 'update'])->name('fornecedores.update');
-    Route::delete('/fornecedores/{id}', [fornecedoresController::class, 'destroy'])->name('fornecedores.destroy');
-    Route::get('fornecedores/{fornecedor}/edit', [FornecedoresController::class, 'edit'])->name('fornecedores.edit');
-    Route::put('fornecedores/{fornecedor}', [FornecedoresController::class, 'update'])->name('fornecedores.update');
+    Route::get('/fornecedores', [FornecedoresController::class, 'index'])->name('fornecedores.index');
+    Route::get('/fornecedores/create', [FornecedoresController::class, 'create'])->name('fornecedores.create');
+    Route::post('/fornecedores/store', [FornecedoresController::class, 'store'])->name('fornecedores.store');
+    Route::get('/fornecedores/{id}', [FornecedoresController::class, 'show'])->name('fornecedores.show');
+    Route::get('/fornecedores/{fornecedor}/edit', [FornecedoresController::class, 'edit'])->name('fornecedores.edit');
+    Route::put('/fornecedores/{fornecedor}', [FornecedoresController::class, 'update'])->name('fornecedores.update');
+    Route::delete('/fornecedores/{id}', [FornecedoresController::class, 'destroy'])->name('fornecedores.destroy');
+    
+
 
 
 
