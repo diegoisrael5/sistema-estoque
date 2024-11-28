@@ -43,7 +43,7 @@ class SaidaEstoqueController extends Controller
             'motivo' => 'nullable|string',
         ]);
 
-        // Cria a nova saída de estoque
+
         SaidaEstoque::create([
             'equipamento_id' => $request->equipamento_id,
             'cliente_id' => $request->cliente_id,
@@ -53,24 +53,24 @@ class SaidaEstoqueController extends Controller
             'motivo' => $request->motivo,
         ]);
 
-        // Redireciona para a lista de saídas com uma mensagem de sucesso
+        
         return redirect()->route('saidas_estoque.index')->with('success', 'Saída de estoque cadastrada com sucesso!');
     }
 
-    // Exibe o formulário de edição de uma saída de estoque
+    
     public function edit($id)
     {
-        // Obtém a saída de estoque e os equipamentos
+        
         $saidaEstoque = SaidaEstoque::findOrFail($id);
         $equipamentos = Equipamento::all();
 
         return view('saidas_estoque.edit', compact('saidaEstoque', 'equipamentos'));
     }
 
-    // Atualiza os dados de uma saída de estoque existente
+   
     public function update(Request $request, $id)
     {
-        // Valida os dados de atualização
+        
         $validatedData = $request->validate([
             'equipamento_id' => 'required|exists:equipamentos,id',
             'quantidade' => 'required|integer|min:1',
@@ -78,24 +78,24 @@ class SaidaEstoqueController extends Controller
             'motivo' => 'nullable|string',
         ]);
 
-        // Localiza a saída de estoque e a atualiza
+        
         $saidaEstoque = SaidaEstoque::findOrFail($id);
         $saidaEstoque->update($validatedData);
 
-        // Redireciona para a lista de saídas com uma mensagem de sucesso
+        
         return redirect()->route('saidas_estoque.index')->with('success', 'Saída de estoque atualizada com sucesso!');
     }
 
-    // Exclui uma saída de estoque
+   
     public function destroy($id)
     {
-        // Localiza a saída de estoque pelo ID
+       
         $saidaEstoque = SaidaEstoque::findOrFail($id);
 
-        // Exclui a saída de estoque
+        
         $saidaEstoque->delete();
 
-        // Redireciona para a lista com uma mensagem de sucesso
+    
         return redirect()->route('saidas_estoque.index')->with('success', 'Saída de estoque excluída com sucesso!');
     }
 }

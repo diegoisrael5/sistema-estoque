@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FuncionarioController extends Controller
 {
     /**
-     * Exibe o formulário para criação de um novo funcionário.
+     
      *
      * @return \Illuminate\View\View
      */
@@ -18,7 +18,7 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Armazena um novo funcionário no banco de dados.
+     
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -34,7 +34,7 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Exibe a lista de funcionários.
+     
      *
      * @return \Illuminate\View\View
      */
@@ -45,8 +45,8 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Exibe as informações de um funcionário específico.
-     *
+     
+     
      * @param int $id
      * @return \Illuminate\View\View
      */
@@ -57,7 +57,7 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Exibe o formulário de edição de um funcionário.
+     
      *
      * @param int $id
      * @return \Illuminate\View\View
@@ -69,7 +69,7 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Atualiza as informações de um funcionário específico.
+   .
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
@@ -87,7 +87,7 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Remove um funcionário específico do banco de dados.
+     
      *
      * @param int $id
      * @return \Illuminate\Http\RedirectResponse
@@ -102,7 +102,7 @@ class FuncionarioController extends Controller
     }
 
     /**
-     * Valida os dados do funcionário.
+    
      *
      * @param \Illuminate\Http\Request $request
      * @param int|null $id

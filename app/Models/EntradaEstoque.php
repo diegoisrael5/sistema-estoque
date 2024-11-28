@@ -24,7 +24,7 @@ class EntradaEstoque extends Model
 
 
     /**
-     * Escopo para filtrar entradas de estoque por equipamento.
+     
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param int|null $equipamentoId
@@ -32,12 +32,12 @@ class EntradaEstoque extends Model
      */
     public function scopeByEquipamento($query, $equipamentoId = null)
     {
-        // Se o ID do equipamento for fornecido, aplica o filtro
+        
         if ($equipamentoId) {
             return $query->where('equipamento_id', $equipamentoId);
         }
 
-        // Retorna o query sem filtro, caso o ID não seja fornecido
+       
         return $query;
     }
 }

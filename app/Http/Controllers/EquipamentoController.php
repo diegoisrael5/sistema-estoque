@@ -17,13 +17,13 @@ class EquipamentoController extends Controller
 
 
 
-    // Exibe o formulário de criação
+ 
     public function create()
     {
         return view('equipamentos.create');
     }
 
-    // Armazena um novo equipamento no banco
+ 
     public function store(Request $request)
     {
         $request->validate([
@@ -36,14 +36,14 @@ class EquipamentoController extends Controller
         return redirect()->route('equipamentos.index');
     }
 
-    // Exibe o formulário para edição de um equipamento
+   
     public function edit($id)
     {
         $equipamento = Equipamento::findOrFail($id);
         return view('equipamentos.edit', compact('equipamento'));
     }
 
-    // Atualiza um equipamento existente
+  
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -57,7 +57,7 @@ class EquipamentoController extends Controller
         return redirect()->route('equipamentos.index');
     }
 
-    // Deleta um equipamento
+    
     public function destroy($id)
     {
         Equipamento::destroy($id);

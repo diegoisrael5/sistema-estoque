@@ -10,10 +10,10 @@ class SaidaEstoque extends Model
 {
     use HasFactory;
 
-    // Define a tabela associada ao modelo
+    
     protected $table = 'saidas_estoque';
 
-    // Campos que podem ser preenchidos em massa
+    
     protected $fillable = [
         'equipamento_id',
         'cliente_id',
@@ -23,25 +23,24 @@ class SaidaEstoque extends Model
         'data_saida',
     ];
 
-    // Relacionamento com Equipamento
     public function equipamento()
     {
         return $this->belongsTo(Equipamento::class, 'equipamento_id');
     }
 
-    // Relacionamento com Cliente
+    
     public function cliente()
     {
-        return $this->belongsTo(Cliente::class); // Relação de muitos para um com Cliente
+        return $this->belongsTo(Cliente::class); 
     }
 
-    // Relacionamento com Funcionario
+    
     public function funcionario()
     {
-        return $this->belongsTo(Funcionario::class); // Relação de muitos para um com Funcionario
+        return $this->belongsTo(Funcionario::class); 
     }
 
-    // Definindo a data como tipo Carbon (caso necessário)
+   
     protected $dates = [
         'data_saida',
     ];

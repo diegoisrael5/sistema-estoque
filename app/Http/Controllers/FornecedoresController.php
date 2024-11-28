@@ -7,26 +7,20 @@ use Illuminate\Http\Request;
 
 class FornecedoresController extends Controller
 {
-    /**
-     * Exibe a lista de fornecedores.
-     */
+
     public function index()
     {
         $fornecedores = Fornecedores::all();
         return view('fornecedores.index', compact('fornecedores'));
     }
 
-    /**
-     * Exibe o formulário para criar um novo fornecedor.
-     */
+
     public function create()
     {
         return view('fornecedores.create');
     }
 
-    /**
-     * Armazena um novo fornecedor no banco de dados.
-     */
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -42,18 +36,14 @@ class FornecedoresController extends Controller
             ->with('success', 'Fornecedor cadastrado com sucesso!');
     }
 
-    /**
-     * Exibe o formulário para editar um fornecedor específico.
-     */
+
     public function edit($id)
     {
         $fornecedor = Fornecedores::findOrFail($id);
         return view('fornecedores.edit', compact('fornecedor'));
     }
 
-    /**
-     * Atualiza as informações de um fornecedor específico.
-     */
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -75,9 +65,7 @@ class FornecedoresController extends Controller
         return redirect()->route('fornecedores.index')->with('success', 'Fornecedor atualizado com sucesso!');
     }
 
-    /**
-     * Exclui um fornecedor específico.
-     */
+
     public function destroy($id)
     {
         $fornecedor = Fornecedores::findOrFail($id);
