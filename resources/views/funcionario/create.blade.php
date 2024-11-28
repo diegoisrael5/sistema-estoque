@@ -120,10 +120,12 @@
                 @error('telefone') <div class="text-danger">{{ $message }}</div> @enderror
             </div>
             <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="cpf" class="form-control" value="{{ old('cpf') }}" required>
-                @error('cpf') <div class="text-danger">{{ $message }}</div> @enderror
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required pattern="\d{11}"
+                    title="O CPF deve conter exatamente 11 números."
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             </div>
+
             <div class="d-flex">
                 <button type="submit" class="btn btn-success">Salvar</button>
                 <a href="{{ route('funcionarios.index') }}" class="btn btn-secondary">Cancelar</a>

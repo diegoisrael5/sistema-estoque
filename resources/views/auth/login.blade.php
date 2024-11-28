@@ -1,47 +1,139 @@
 <x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="container">
+        <h1>Login</h1>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+        <!-- Session Status -->
+        @if(session('status'))
+            <div class="mb-4 text-green-500">
+                {{ session('status') }}
+            </div>
+        @endif
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <!-- Email Address -->
+            <label for="email" class="form-label">Email</label>
+            <input id="email" type="email" name="email" class="form-control" value="{{ old('email') }}" required autofocus>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <!-- Password -->
+            <label for="password" class="form-label">Password</label>
+            <input id="password" type="password" name="password" class="form-control" required>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <!-- Remember Me -->
+            <div class="mt-3">
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me" type="checkbox" name="remember" class="form-checkbox">
+                    <span class="ml-2 text-sm text-gray-300">Remember me</span>
+                </label>
+            </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-                <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+            <!-- Submit Button -->
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary">Log in</button>
+            </div>
 
-        <div class="flex items-center justify-end mt-4">
+            <!-- Forgot Password -->
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
+                <div class="mt-4 text-center">
+                    <a href="{{ route('password.request') }}" class="text-link">Forgot your password?</a>
+                </div>
             @endif
+        </form>
+    </div>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
+    <style>
+        /* Defina o fundo de toda a página como preto */
+        body {
+            background-color: #000; /* Cor de fundo preta */
+            color: #e0e0e0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container com fundo escuro */
+        .container {
+            background-color: #1e1e1e; /* Cor de fundo mais escura para o formulário */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #f5f5f5;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Estilo para os rótulos dos campos */
+        .form-label {
+            color: #f5f5f5;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Estilo para os campos de entrada */
+        .form-control {
+            background-color: #333; /* Fundo escuro */
+            color: #f5f5f5;
+            border: 1px solid #444;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        /* Efeito no foco dos campos */
+        .form-control:focus {
+            border-color: #6200ea;
+            box-shadow: 0 0 0 0.2rem rgba(98, 0, 234, 0.25);
+        }
+
+        /* Botão de login com estilo */
+        .btn {
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Estilo para o botão primário */
+        .btn-primary {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #388e3c;
+        }
+
+        /* Link de "Esqueceu a senha?" */
+        .text-link {
+            text-align: center;
+            display: block;
+            margin-top: 10px;
+            color: #f5f5f5;
+            text-decoration: none;
+        }
+
+        .text-link:hover {
+            text-decoration: underline;
+            color: #ffffff;
+        }
+
+        /* Estilo do checkbox */
+        .form-checkbox {
+            margin-right: 5px;
+            accent-color: #4caf50;
+        }
+    </style>
 </x-guest-layout>

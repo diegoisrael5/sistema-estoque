@@ -101,19 +101,24 @@
             @csrf
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') }}" required>
+                <input type="text" name="nome" id="nome" class="form-control" value="{{ old('nome') }}"
+                    required>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" required>
+                <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}"
+                    required>
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone') }}" required>
+                <input type="text" name="telefone" id="telefone" class="form-control" value="{{ old('telefone') }}"
+                    required>
             </div>
             <div class="form-group">
                 <label for="cnpj">CNPJ</label>
-                <input type="text" name="cnpj" id="cnpj" class="form-control" value="{{ old('cnpj') }}" required>
+                <input type="text" name="cnpj" id="cnpj" class="form-control" value="{{ old('cnpj') }}"
+                    required pattern="\d{14}" title="O CNPJ deve conter exatamente 14 números."
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             </div>
             <div class="d-flex">
                 <button type="submit" class="btn btn-success">Salvar</button>

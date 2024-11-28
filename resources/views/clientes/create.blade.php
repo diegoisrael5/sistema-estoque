@@ -111,8 +111,11 @@
             </div>
             <div class="form-group">
                 <label for="cpf" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf" required>
+                <input type="text" class="form-control" id="cpf" name="cpf" required pattern="\d{11}"
+                    title="O CPF deve conter exatamente 11 números."
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
             </div>
+
 
             <div class="d-flex justify-content-between mt-4">
                 <button type="submit" class="btn btn-primary">Cadastrar Cliente</button>
